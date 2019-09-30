@@ -18,7 +18,9 @@ namespace FlightRoutesCalculator.Controllers
             List<FlightRouteModel> inboundFlights = api.CastFlights(allFlights, false);
             List<FlightRouteModel> outboundFlights = api.CastFlights(allFlights, true);
 
-            return View();
+            FlightRoutesViewModel model = new FlightRoutesViewModel(inboundFlights, outboundFlights);
+
+            return View(model);
         }
 
         public ActionResult About()

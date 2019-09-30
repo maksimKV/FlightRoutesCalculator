@@ -77,3 +77,4 @@ D:\Projects\FlightRoutesCalculator\FlightRoutesCalculator\obj\Debug\FlightRoutes
 D:\Projects\FlightRoutesCalculator\FlightRoutesCalculator\obj\Debug\FlightRoutesCalculator.csproj.CopyComplete
 D:\Projects\FlightRoutesCalculator\FlightRoutesCalculator\obj\Debug\FlightRoutesCalculator.dll
 D:\Projects\FlightRoutesCalculator\FlightRoutesCalculator\obj\Debug\FlightRoutesCalculator.pdb
+D:\Projects\FlightRoutesCalculator\FlightRoutesCalculator\obj\Debug\FlightRoutesCalculator.csprojAssemblyReference.cache
