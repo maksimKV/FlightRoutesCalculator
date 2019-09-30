@@ -73,7 +73,6 @@ D:\Projects\FlightRoutesCalculator\FlightRoutesCalculator\bin\Antlr3.Runtime.pdb
 D:\Projects\FlightRoutesCalculator\FlightRoutesCalculator\bin\System.Diagnostics.DiagnosticSource.xml
 D:\Projects\FlightRoutesCalculator\FlightRoutesCalculator\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 D:\Projects\FlightRoutesCalculator\FlightRoutesCalculator\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Projects\FlightRoutesCalculator\FlightRoutesCalculator\obj\Debug\FlightRoutesCalculator.csprojAssemblyReference.cache
 D:\Projects\FlightRoutesCalculator\FlightRoutesCalculator\obj\Debug\FlightRoutesCalculator.csproj.CoreCompileInputs.cache
 D:\Projects\FlightRoutesCalculator\FlightRoutesCalculator\obj\Debug\FlightRoutesCalculator.csproj.CopyComplete
 D:\Projects\FlightRoutesCalculator\FlightRoutesCalculator\obj\Debug\FlightRoutesCalculator.dll
