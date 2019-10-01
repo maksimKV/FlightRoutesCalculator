@@ -64,3 +64,8 @@ input.radioBox {
     opacity: 0.5;
 }
 
+#ticketPriceLabel {
+    text-align: center;
+    font-size: 32px;
+}
+

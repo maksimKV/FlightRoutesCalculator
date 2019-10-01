@@ -43,6 +43,8 @@
         </li>
         }
     </ul>
+
+    <p id="ticketPriceLabel">Price for tickets: <span id="ticketPrice"></span></p>
 </div>
 
 <script src="@Url.Content("~/Scripts/jquery-3.3.1.min.js")" type="text/javascript"></script>
@@ -80,16 +82,28 @@
             }
         ];
 
+        var ticketPrice = 0;
+        showTicketPrice();
+
+        // On click function for the Inbound flights
         function changeInbound() {
-            
+            var inboundFlightId = $('input[name=inboundFlightId]:checked').val();
+            var price = inboundFlights.find(f => f.id == inboundFlightId).price;
+
+            ticketPrice += price;
+            showTicketPrice();
         };
 
+        // On click function for the Outbound flights
         function changeOutbound() {
             clearResults();
 
             var outboundFlightId = $('input[name=outboundFlightId]:checked').val();
 
             var airline = outboundFlights.find(f => f.id == outboundFlightId).airline;
+            var price = outboundFlights.find(f => f.id == outboundFlightId).price;
+
+            ticketPrice += price;
 
             fadeAirline(airline);
         };
@@ -105,6 +119,7 @@
             }
         };
 
+        // Clear the fading effect from previous clicks
         function clearResults(){
             for (var i = 0; i < inboundFlights.length; i++) {
                 var flightId = inboundFlights[i].id;
@@ -119,6 +134,14 @@
                     }
                 }
             }
+
+            ticketPrice = 0;
+            showTicketPrice();
+        }
+
+        // Show price for tickets
+        function showTicketPrice() {
+            $("#ticketPrice").html(ticketPrice);
         }
     });
 </script>
