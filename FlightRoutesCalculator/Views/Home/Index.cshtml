@@ -10,10 +10,17 @@
         @foreach (var flight in Model.OutboundFlights)
         {
             <li class="flightDetails">
-                <p>Departure Airport: @flight.DepartureAirportCode</p>
-                <p>Arrival Airport: @flight.ArrivalAirportCode</p>
-                <p>Airline: @flight.Airline</p>
-                <p>Price: @flight.Price</p>
+                <div class="flightLeftSide">
+                    <p>Departure Airport: @flight.DepartureAirportCode</p>
+                    <p>Arrival Airport: @flight.ArrivalAirportCode</p>
+                </div>
+
+                <div class="flightRighSide">
+                    <p>Airline: @flight.Airline</p>
+                    <p>Price: @flight.Price</p>
+
+                    <input class="radioBox" type="radio" name="outboundFlightId" value="@flight.ID" />
+                </div>  
             </li>
         }
     </ul>
@@ -22,12 +29,96 @@
     <ul>
         @foreach (var flight in Model.InboundFlights)
         {
-            <li class="flightDetails">
+        <li class="flightDetails" id="inboundFlight@(flight.ID)">
+            <div class="flightLeftSide">
                 <p>Departure Airport: @flight.DepartureAirportCode</p>
                 <p>Arrival Airport: @flight.ArrivalAirportCode</p>
+            </div>
+            <div class="flightRighSide">
                 <p>Airline: @flight.Airline</p>
                 <p>Price: @flight.Price</p>
-            </li>
+
+                <input class="radioBox" type="radio" name="inboundFlightId" value="@flight.ID" />
+            </div>
+        </li>
         }
     </ul>
 </div>
+
+<script src="@Url.Content("~/Scripts/jquery-3.3.1.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.noConflict();
+
+        $("input:radio[name=inboundFlightId]").click(changeInbound);
+        $("input:radio[name=outboundFlightId]").click(changeOutbound);
+
+        var inboundFlights = [
+            @foreach (var flight in Model.InboundFlights)
+            {
+                <text>{
+                    id: @flight.ID,
+                    departureAirportCode: '@flight.DepartureAirportCode',
+                    arrivalAirportCode: '@flight.ArrivalAirportCode',
+                    airline: '@flight.Airline',
+                    price: @flight.Price
+                },</text>
+            }
+        ]; 
+
+
+        var outboundFlights = [
+            @foreach (var flight in Model.OutboundFlights)
+            {
+                <text>{
+                    id: @flight.ID,
+                    departureAirportCode: '@flight.DepartureAirportCode',
+                    arrivalAirportCode: '@flight.ArrivalAirportCode',
+                    airline: '@flight.Airline',
+                    price: @flight.Price
+                },</text>
+            }
+        ];
+
+        function changeInbound() {
+            
+        };
+
+        function changeOutbound() {
+            clearResults();
+
+            var outboundFlightId = $('input[name=outboundFlightId]:checked').val();
+
+            var airline = outboundFlights.find(f => f.id == outboundFlightId).airline;
+
+            fadeAirline(airline);
+        };
+
+        // Disables clicking on a different inbound airline than the airline chosen as outbound flight 
+        function fadeAirline(airline) {
+            var filteredFligts = inboundFlights.filter(f => f.airline != airline);
+
+            for (var i = 0; i < filteredFligts.length; i++) {
+                var flightId = filteredFligts[i].id;
+                $("#inboundFlight" + flightId).addClass("disabled");
+                $("input[type=radio][value=" + flightId + "]").attr("disabled", true);
+            }
+        };
+
+        function clearResults(){
+            for (var i = 0; i < inboundFlights.length; i++) {
+                var flightId = inboundFlights[i].id;
+
+                if ($("#inboundFlight" + flightId).hasClass("disabled")) {
+                    $("#inboundFlight" + flightId).removeClass("disabled");
+                    $("input[type=radio][value=" + flightId + "]").attr("disabled", false);
+
+                    if ($("input[type=radio][value=" + flightId + "]").prop("checked", true)) {
+                        console.log("is checked");
+                        $("input[type=radio][value=" + flightId + "]").prop("checked", false);
+                    }
+                }
+            }
+        }
+    });
+</script>

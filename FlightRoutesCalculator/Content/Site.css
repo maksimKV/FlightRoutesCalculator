@@ -1,9 +1,4 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
+﻿/* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -22,3 +17,50 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* Custom rules */
+h1, h2 {
+    text-align: center;
+}
+
+h2 {
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+}
+
+ul {
+    padding: 0px;
+    list-style: none;
+    width: 100%;
+    display: block;
+}
+
+.flightDetails {
+    width: 100%;
+    display: block;
+    float: left;
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+.flightLeftSide {
+    float: left;
+    display: block;
+    width: 50%;
+}
+
+.flightRighSide {
+    float: left;
+    display: block;
+    width: 50%;
+}
+
+input.radioBox {
+    float: right;
+    margin-top: -40px;
+}
+
+.disabled {
+    opacity: 0.5;
+}
+
