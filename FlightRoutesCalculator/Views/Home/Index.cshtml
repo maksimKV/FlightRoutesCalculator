@@ -83,6 +83,7 @@
         ];
 
         var ticketPrice = 0;
+        var priceBefore = 0;
         showTicketPrice();
 
         // On click function for the Inbound flights
@@ -90,7 +91,7 @@
             var inboundFlightId = $('input[name=inboundFlightId]:checked').val();
             var price = inboundFlights.find(f => f.id == inboundFlightId).price;
 
-            ticketPrice += price;
+            ticketPrice = priceBefore + price;
             showTicketPrice();
         };
 
@@ -103,6 +104,7 @@
             var airline = outboundFlights.find(f => f.id == outboundFlightId).airline;
             var price = outboundFlights.find(f => f.id == outboundFlightId).price;
 
+            priceBefore = price;
             ticketPrice += price;
 
             fadeAirline(airline);
@@ -134,6 +136,7 @@
                 }
             }
 
+            priceBefore = 0;
             ticketPrice = 0;
             showTicketPrice();
         }
